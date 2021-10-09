@@ -9,3 +9,23 @@ datasource db {
 generator client {
   provider = "prisma-client-js"
 }
+
+model Page {
+  id     String   @id @default(uuid())
+  links  String[]
+  url    String
+  userId String
+  User   User[]
+
+  @@map("pages")
+}
+
+model User {
+  id       String  @id @default(uuid())
+  username String  @unique
+  password String
+  page     Page?   @relation(fields: [pageId], references: [id])
+  pageId   String?
+
+  @@map("users")
+}
