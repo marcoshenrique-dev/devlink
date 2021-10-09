@@ -1,8 +1,12 @@
 import express, { NextFunction, Request, Response } from 'express';
+import router from './shared/routes';
+
 require('express-async-errors');
 
 const app = express();
 app.use(express.json());
+
+app.use(router);
 
 app.use((error: Error , _request: Request, response: Response, _next: NextFunction) => {
   console.log(error);
