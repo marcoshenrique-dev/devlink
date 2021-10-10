@@ -3,7 +3,7 @@ import {Router} from 'express';
 
 const serverRouter = Router();
 
-serverRouter.use(userRouter); // rota de usuários
+serverRouter.use("/users", userRouter); // rota de usuários
 
 
 export default serverRouter;

@@ -1,15 +1,20 @@
+import { CreateUserService } from "@users/infra/services";
 import { Request, Response } from "express";
-import {StoreUserRepository} from '@users/infra/repositories/prisma';
 
 class CreateUserController {
   async handle(request: Request, response: Response) {
     const {username, password, image_url} = request.body;
 
-    const storeUserRepository = new StoreUserRepository();
+    const createUserService = new CreateUserService();
 
-    const result = storeUserRepository.execute();
+    const result = await createUserService.execute({
+      username,
+      password,
+      image_url
+    });
 
-    response.json(result);
+
+   return response.json(result);
 
 
   }
