@@ -1,13 +1,10 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+generator client {
+  provider = "prisma-client-js"
+}
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
-}
-
-generator client {
-  provider = "prisma-client-js"
 }
 
 model Page {
@@ -21,11 +18,12 @@ model Page {
 }
 
 model User {
-  id       String  @id @default(uuid())
-  username String  @unique
-  password String
-  page     Page?   @relation(fields: [pageId], references: [id])
-  pageId   String?
+  id        String  @id @default(uuid())
+  username  String  @unique
+  password  String
+  pageId    String?
+  image_url String
+  page      Page?   @relation(fields: [pageId], references: [id])
 
   @@map("users")
 }
