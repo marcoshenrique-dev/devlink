@@ -1,5 +1,5 @@
 import express, { NextFunction, Request, Response } from 'express';
-import router from './shared/routes';
+import router from '@shared/routes';
 
 require('express-async-errors');
 
