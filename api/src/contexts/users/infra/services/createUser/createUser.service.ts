@@ -1,7 +1,7 @@
 import IUsers from '@users/core/entities/users';
 import {ICreateUserRequest} from '@users/core/requests';
 import { hash } from 'bcryptjs';
-import { FindByUsernameRepository, StoreUserRepository } from '../repositories/prisma';
+import { FindByUsernameRepository, StoreUserRepository } from '../../repositories/prisma';
 
 class CreateUserService {
   async execute({username, password, image_url}: ICreateUserRequest): Promise<IUsers> {

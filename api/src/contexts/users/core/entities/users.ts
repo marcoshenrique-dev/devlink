@@ -1,5 +1,5 @@
 export default interface IUsers {
-  id : String;
+  id : string;
   username: string;
   password: string;
   pageId?: string;
