@@ -1,6 +1,9 @@
+
 import IUsers from '@users/core/entities/users';
 import {ICreateUserRequest} from '@users/core/requests';
+
 import { hash } from 'bcryptjs';
+
 import { FindByUsernameRepository, StoreUserRepository } from '../../repositories/prisma';
 
 class CreateUserService {
@@ -8,6 +11,7 @@ class CreateUserService {
 
     const findByUsernameRepository = new FindByUsernameRepository();
     const storeUserRepository = new StoreUserRepository();
+
 
     const userAlreadyExists = await findByUsernameRepository.findByUsername(username);
 
@@ -22,8 +26,6 @@ class CreateUserService {
       username,
       password: passwordHash
     });
-
-    console.log(userCreated);
 
     return userCreated;
    }
