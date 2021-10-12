@@ -10,7 +10,7 @@ datasource db {
 model Page {
   id     String   @id @default(uuid())
   links  String[]
-  url    String
+  url    String   @unique
   userId String
   User   User[]
 
