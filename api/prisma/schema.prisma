@@ -11,7 +11,7 @@ model Page {
   id     String   @id @default(uuid())
   links  String[]
   url    String   @unique
-  userId String
+  userId String   @unique
   User   User[]
 
   @@map("pages")
