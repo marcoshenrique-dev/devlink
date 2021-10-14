@@ -1,14 +1,15 @@
-import { ensureAuthenticated } from '@shared/middlewares/ensureAuthenticated';
 import {Router} from 'express';
+
+import { FindPageController } from '../controllers';
+import { ensureAuthenticated } from '@shared/middlewares/ensureAuthenticated';
 
 const pageRouter = Router();
 
-pageRouter.use(ensureAuthenticated);
+const findPageController = new FindPageController();
 
-pageRouter.get('/', (request, response) => {
-  return response.json({
-    test: true
-  });
-});
+
+pageRouter.get('/:url', findPageController.handle);
+
+pageRouter.use(ensureAuthenticated);
 
 export {pageRouter};
