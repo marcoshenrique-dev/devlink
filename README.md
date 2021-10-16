@@ -5,6 +5,13 @@ projeto de links baseado no linktree, onde terá um dashboard para o criador da 
 
 <img src="./github/projeto.png" alt="DEVLINK PRINT LOGIN">
 
+
+--- 
+### demonstração da tela de login 
+
+<img src="./github/gravacao.gif" alt="DEVLINK SCREEN LOGIN">
+
+---
 ### tecnologias
 
 - prisma
@@ -12,6 +19,11 @@ projeto de links baseado no linktree, onde terá um dashboard para o criador da 
 - typescript
 - json web token
 - arquitetura e padrões de projetos
+
+- react
+- yup
+- formik
+- tailwind
 
 ---
 

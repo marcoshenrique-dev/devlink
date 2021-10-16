@@ -62,7 +62,7 @@ function FormSignup() {
 
       <form onSubmit={formik.handleSubmit} className="w-4/5 flex flex-col mt-20 mb-8">
 
-        <div className={`bg-gray-100 pl-4 w-1/1 rounded-xl ${formik.errors.password && formik.touched.password ? 'border-2 border-red-500' : 'border-0'}`}>
+        <div className={`bg-gray-100 pl-4 w-1/1 rounded-xl ${formik.errors.username && formik.touched.username ? 'border-2 border-red-500' : 'border-0'}`}>
 
         <span className="font-semibold">dev<span className="text-blue-600">links</span>.com/</span>
         
