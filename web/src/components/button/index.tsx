@@ -1,13 +1,18 @@
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Loader from 'react-loading';
 
-const Button : React.FC  = ({children}) => {
-  const [loading, setLoading] = useState(false);
+interface IButton {
+  loading: boolean;
+}
+
+const Button : React.FC<React.HTMLProps<HTMLButtonElement> & IButton>  = (props,{
+  children
+}) => {
   return (
-    <button className={`bg-blue-600 py-4 px-4 rounded-xl w-auto font-bold text-white hover:opacity-80 flex items-center justify-center`}>
+    <button {...props} className={`bg-blue-600 py-4 px-4 rounded-xl w-auto font-bold text-white hover:opacity-80 flex items-center justify-center`}>
       {
-        loading === false ? children : <Loader type="spin" width="25px" height="25px"/>
+        props.loading === false ? props.children : <Loader type="spin" width="25px" height="25px"/>
       }
     </button>
   );
