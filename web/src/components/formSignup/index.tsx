@@ -1,9 +1,13 @@
 import Button from "../button";
-import Link from "next/link";
+import Router from 'next/router';
+import Link from 'next/link';
 import { useEffect, useState } from "react";
+
 
 import * as Yup from 'yup';
 import { useFormik } from "formik";
+import api from "../../services/api";
+import toast from "react-hot-toast";
 
 
 function FormSignup() {
@@ -30,6 +34,8 @@ function FormSignup() {
    
   }
 
+  const notify = () => toast('Conta criada com sucesso');
+
 
   const formik = useFormik({
     initialValues: {
@@ -42,10 +48,24 @@ function FormSignup() {
       password: Yup.string().required('senha é obrigatória').min(6, 'senha precisa ter mais de 6 dígitos'),
       imageUrl: Yup.string().required('imagem de perfil é obrigatória')
     }),
-    onSubmit: values => {
+    onSubmit: async (values) => {
       if(loading === false && visible === true) {
         setLoading(true);
-        alert('carregando');
+        const result = await api.post('/users', {
+          username: values.username,
+          password: values.password,
+          image_url: values.imageUrl
+        });
+
+        console.log(result.data);
+
+        setLoading(false);
+
+        notify();
+
+        Router.push('/login');
+        
+
       }
     }
 
@@ -55,8 +75,12 @@ function FormSignup() {
     validate();
   }, [formik.errors]);
 
+
   return(
     <div className="pt-20 pl-5">
+
+    
+
       <h3 className="text-4xl">Crie uma conta grátis</h3>
       <p className="pt-2">grátis para sempre, sem necessidade de pagamento</p>
 
