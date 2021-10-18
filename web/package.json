@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "axios": "^0.23.0",
     "formik": "^2.2.9",
     "next": "11.1.2",
     "react": "17.0.2",
