@@ -1,6 +1,6 @@
 import Button from "../button";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import { useFormik } from "formik";
 import * as Yup from 'yup';
@@ -9,17 +9,22 @@ import api from "../../services/api";
 import Router from "next/router";
 import toast from "react-hot-toast";
 import { AxiosResponse } from "axios";
-
+import { authContext } from "../../hooks/authContext";
 interface IData {
   token?: string;
   status?: string;
   message?: string;
-  user?: string;
+  user?: {
+    username: string;
+    password: string;
+  };
 }
 
 function FormLogin () {
   const [loading, setLoading] = useState(false);
   const [visible, setVisible] = useState(false);
+
+  const {signIn} = useContext(authContext);
 
   const notify = (message: string) => toast(message);
 
@@ -41,16 +46,22 @@ function FormLogin () {
           password: values.password,
         });
 
+        const {user, token, message, status} = result.data;
+
         console.log(result.data);
 
-        if(result.data.status && result.data.message) {
-          notify(result.data.message);
-          console.log('testando');
+        if(status && message) {
+          notify(message);
+         
         } 
         
-        if(result.data.token) {
+        if(token && user) {
+          console.log('testando');
+          await signIn({user, token});
+
           notify('Login efetuado com sucesso');
         }
+
 
         setLoading(false);
 
