@@ -29,7 +29,7 @@ class AuthenticateUserService {
     const token = await generateTokenProvider.execute(userAlreadyExists.id);
 
 
-    return {token};
+    return {token, user: userAlreadyExists};
 
   }
 }
