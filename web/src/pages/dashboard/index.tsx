@@ -1,9 +1,16 @@
 import { GetServerSideProps } from "next";
 import { parseCookies } from "nookies";
+import AddLinks from "../../components/addLinks";
+import Menu from "../../components/menu";
+import Preview from "../../components/preview";
 
 export default function Dashboard() {
   return(
-    <h2>Dashboard</h2>
+    <main className="flex flex-row w-screen h-screen">
+      <Menu/>
+      <AddLinks />
+      <Preview />
+    </main>
   );
 }
 
