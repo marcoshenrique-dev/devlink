@@ -31,7 +31,7 @@ export const AuthProvider: React.FC = ({children}) => {
   const isAuthenticated = !!user;
 
   useEffect(() => {
-    const {'nexauth.token': token, 'nexauth.user': user} = parseCookies();
+    const {'nextauth.token': token, 'nextauth.user': user} = parseCookies();
 
     if(token) {
       setUser(JSON.parse(user));
