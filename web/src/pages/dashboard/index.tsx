@@ -9,7 +9,7 @@ export default function Dashboard() {
     <main className="flex flex-row w-screen h-screen">
       <Menu/>
       <AddLinks />
-      <Preview />
+
     </main>
   );
 }

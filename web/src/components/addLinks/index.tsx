@@ -115,7 +115,7 @@ function AddLinks() {
    }, [user]);
 
   return(
-    <section className="flex flex-col p-10 w-7/12 bg-gray-50 border-r overflow-y-auto">
+    <section className="flex flex-col p-10 w-11/12 bg-gray-50 overflow-y-auto">
       <Button style={{marginBottom: visible ? 15 : 30}} onClick={() => setVisible(!visible)} loading={false}>
         Adicionar novo link
       </Button>
